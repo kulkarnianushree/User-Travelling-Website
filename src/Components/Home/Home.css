@@ -1,0 +1,28 @@
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+  }
+  
+  .nav-container {
+    display: flex;
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-list li {
+    margin: 0 15px; /* Space between each item */
+  }
+  
+  .nav-list a {
+    text-decoration: none;
+    color: #000; /* Adjust color as needed */
+    font-size: 18px; /* Adjust font size as needed */
+  }
+  
