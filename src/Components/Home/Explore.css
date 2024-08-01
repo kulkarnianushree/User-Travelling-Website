@@ -1,0 +1,46 @@
+.explore-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.explore-container div {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.explore-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 20px;
+}
+
+.explore-item {
+    cursor: pointer;
+    flex: 0 0 auto;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.explore-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.explore-image {
+    width: 100%;
+    height: 250px; /* Increased height */
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.explore-label {
+    margin-top: 10px;
+    font-size: 18px;
+}

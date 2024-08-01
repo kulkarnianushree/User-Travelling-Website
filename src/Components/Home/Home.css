@@ -1,12 +1,15 @@
 .home-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh; /* Full height of the viewport */
+    padding-top: 20px; /* Add padding to create space from the top */
   }
   
   .nav-container {
+    width: 100%;
     display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Space between the nav bar and the navigation items */
   }
   
   .nav-list {

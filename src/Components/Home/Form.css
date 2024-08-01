@@ -1,0 +1,21 @@
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px; /* Adjust the gap between form items */
+    padding: 20px;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-item label {
+    margin-bottom: 5px;
+}
+
+.form-item select,
+.form-item input {
+    width: 200px; /* Adjust width as necessary */
+}

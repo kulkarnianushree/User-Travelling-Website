@@ -16,6 +16,7 @@
     "ract": "^0.0.1",
     "react": "^18.0.0",
     "react-bootstrap": "^2.10.4",
+    "react-datepicker": "^7.3.0",
     "react-dom": "^18.0.0",
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.25.1",
