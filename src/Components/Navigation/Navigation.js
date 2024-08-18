@@ -4,11 +4,14 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { Button } from 'react-bootstrap';
 import Stay from './Stay';
-import './Navigation.css'; // Import the CSS file
-
+import './Navigation.css'; 
+import { NavLink, useNavigate} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Authaction } from '../../Store/auth';
 const Navigation = () => {
     const [showStayOptions, setShowStayOptions] = useState(false);
-
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const StayOptionHandler = () => {
         setShowStayOptions(true);
     };
@@ -16,6 +19,15 @@ const Navigation = () => {
     const closeStayOptions = () => {
         setShowStayOptions(false);
     };
+
+    const YourBookingHandler = () =>{
+        navigate('/YourBooking')
+    }
+
+    const LogoutHandler=()=>{
+        dispatch(Authaction.Logout())
+        navigate('/')
+    }
 
     return (
         <div className="navigation-container">
@@ -25,8 +37,8 @@ const Navigation = () => {
             </div>
             <div className="navigation-buttons">
                 <div className="navigation-button">
-                    <Button type='button' variant='light' onClick={StayOptionHandler}>Stay options</Button>
-                    <IconButton>
+                    <div>Stay options</div>
+                    <IconButton onClick={StayOptionHandler}>
                         <ExpandMoreIcon />
                     </IconButton>
                 </div>
@@ -36,8 +48,14 @@ const Navigation = () => {
                     </IconButton>
                     <Button type='button' variant='light'>Get the app</Button>
                 </div>
+                <div>
+                    <NavLink to='/YourBooking' onClick={YourBookingHandler}>YourBooking</NavLink>
+                </div>
             </div>
             {showStayOptions && <Stay onClose={closeStayOptions} />}
+            <div>
+                <Button type='button' variant='dark' onClick={LogoutHandler}>Logout</Button>
+            </div>
         </div>
     );
 };

@@ -1,0 +1,50 @@
+/* Booking.css */
+.booking-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.booking-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+}
+
+.booking-item img {
+  width: 100px;  /* Adjusted width */
+  height: 75px;  /* Adjusted height */
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
+.details-container {
+  flex: 1;
+}
+
+.details-container p {
+  margin: 8px 0;
+}
+
+.details-container h2 {
+  margin: 0;
+  color: #007bff;
+}
+
+.status-booked {
+  color: green;
+  font-weight: bold;
+}
+
+.no-bookings {
+  font-style: italic;
+  color: #666;
+}

@@ -8,6 +8,7 @@ const Signin = ({ toggleAuthMode }) => {
         Password: '',
         CP: ''
     });
+    
     const [alert, setAlert] = useState({ show: false, variant: '', message: '' });
 
     const emailChangeHandler = (event) => {
@@ -60,13 +61,14 @@ const Signin = ({ toggleAuthMode }) => {
                 }
             });
 
-            const responseData = await response.json();
+            
 
             if (!response.ok) {
-                throw new Error(responseData.error.message || 'Something went wrong');
+                throw new Error( 'Something went wrong');
             }
 
-            console.log(responseData);
+            const data = await response.json()
+            console.log(data)
             setAlert({ show: true, variant: 'success', message: 'Successfully signed up' });
         } catch (error) {
             setAlert({ show: true, variant: 'danger', message: error.message });

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import { useDispatch } from "react-redux";
 import { Authaction } from "../../Store/auth";
 import './Login.css';
@@ -45,11 +45,13 @@ const Login = ({ toggleAuthMode }) => {
                     throw new Error('Something went wrong');
                 }
                 const data = await response.json();
-                dispatch(Authaction.Login({ idToken: data.idToken }));
+                console.log(data)
+                dispatch(Authaction.Login({ Token: data.idToken , Email:data.email}));
                 setAlert({ show: true, variant: 'success', message: 'Successfully logged in' });
             } catch (error) {
                 setAlert({ show: true, variant: 'danger', message: error.message });
             }
+
         }
     };
 

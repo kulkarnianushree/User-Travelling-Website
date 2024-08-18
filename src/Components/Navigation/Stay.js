@@ -31,6 +31,9 @@ const Stay = ({ onClose }) => {
                         <li>
                             <NavLink to='/List'></NavLink>
                         </li>
+                        <li>
+                            <NavLink to='/Book'></NavLink>
+                        </li>
                     </ul>
                 </nav>
             </div>

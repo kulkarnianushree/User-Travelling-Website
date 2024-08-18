@@ -7,6 +7,7 @@ import './Form.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Exploreaction } from '../../Store/explore';
+import { Recentaction } from '../../Store/recent';
 
 const Form = () => {
     const [startDate, setStartDate] = useState(null);
@@ -14,8 +15,8 @@ const Form = () => {
     const [showModal, setShowModal] = useState(false);
     const [rooms, setRooms] = useState([{ adults: 1, children: 0, childrenAges: [] }]);
     const [city, setCity] = useState('');
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleRoomChange = (index, field, value) => {
         const newRooms = [...rooms];
@@ -33,7 +34,7 @@ const Form = () => {
     };
 
     const SearchHandler = async () => {
-        navigate('/List')
+        navigate('/List');
         const totalTravellers = rooms.reduce((total, room) => total + room.adults + room.children, 0);
 
         try {
@@ -55,23 +56,38 @@ const Form = () => {
             }
             const data = await response.json();
             console.log(data);
+            dispatch(Recentaction.setHistory({UserData:[],city}))
         } catch (error) {
             console.error(error);
         }
 
-        try{
-            const response1 = await fetch('https://traveling-website-810b9-default-rtdb.firebaseio.com/products.json')
-            if(!response1.ok){
-                throw new Error('Your internet connection is slow')
+        try {
+            const response1 = await fetch('https://traveling-website-810b9-default-rtdb.firebaseio.com/products.json');
+            if (!response1.ok) {
+                throw new Error('Your internet connection is slow');
             }
-            const data = await response1.json()
-            dispatch(Exploreaction.AddtoItem(data))
-        }
-        catch(error){
-            alert(error.message)
+            const data = await response1.json();
+
+            // Extract cities from the nested structure
+            const cities = [];
+            for (const category in data) {
+                if (data.hasOwnProperty(category)) {
+                    for (const key in data[category]) {
+                        if (data[category].hasOwnProperty(key)) {
+                            const entry = data[category][key];
+                            if (entry.City) {
+                                cities.push(entry.City);
+                            }
+                        }
+                    }
+                }
+            }
+            dispatch(Exploreaction.AddtoItem({ Data: data, Place: cities }));
+        } catch (error) {
+            alert(error.message);
         }
     };
-    
+
     return (
         <div>
             <form className="form-container">
